@@ -12,6 +12,7 @@ public class Main {
     private static UserServiceImpl service = new UserServiceImpl();
 
     public static void main(String[] args) {
+
         service.createUsersTable();
         service.saveUser("Алёна", "Филяева", (byte) 22);
         service.saveUser("Анатолий", "Кисилёв", (byte) 44);
