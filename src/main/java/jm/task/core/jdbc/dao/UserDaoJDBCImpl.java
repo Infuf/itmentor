@@ -28,7 +28,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 "age SMALLINT CHECK (age >= 0 AND age <= 120)" +
                 ");";
 
-        try (var connection = Util.connect()) {
+        try (var connection = Util.connectJDBC()) {
             var statement = connection.createStatement();
             statement.execute(createSqlTable);
 
@@ -42,7 +42,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
         String dropUsers = "DROP TABLE IF EXISTS test.users";
 
-        try (var connection = Util.connect()) {
+        try (var connection = Util.connectJDBC()) {
             var statement = connection.createStatement();
             statement.execute(dropUsers);
 
@@ -56,7 +56,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
         String insertUser = "INSERT INTO test.users (name, lastname, age) VALUES(?, ?, ?)";
 
-        try (var connection = Util.connect()) {
+        try (var connection = Util.connectJDBC()) {
             var prepareStatement = connection.prepareStatement(insertUser);
             prepareStatement.setString(1, name);
             prepareStatement.setString(2, lastName);
@@ -74,7 +74,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
         String deleteUser = "DELETE FROM test.users WHERE id = ?";
 
-        try (var connnection = Util.connect()) {
+        try (var connnection = Util.connectJDBC()) {
             var prepareStatement = connnection.prepareStatement(deleteUser);
             prepareStatement.setLong(1, id);
             prepareStatement.execute();
@@ -91,7 +91,7 @@ public class UserDaoJDBCImpl implements UserDao {
         List<User> users = new ArrayList<>();
         String queryToGetUsers = "SELECT * FROM test.users";
 
-        try (var connnection = Util.connect()) {
+        try (var connnection = Util.connectJDBC()) {
             var statement = connnection.createStatement();
             ResultSet resultSet = statement.executeQuery(queryToGetUsers);
 
@@ -121,7 +121,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
         String queryToCleanUsersTable = "TRUNCATE TABLE test.users";
 
-        try (var connnection = Util.connect()) {
+        try (var connnection = Util.connectJDBC()) {
             var statement = connnection.createStatement();
             statement.execute(queryToCleanUsersTable);
 

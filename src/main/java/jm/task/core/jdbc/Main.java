@@ -12,6 +12,7 @@ public class Main {
     private static UserServiceImpl service = new UserServiceImpl();
 
     public static void main(String[] args) {
+        service.dropUsersTable();
 
         service.createUsersTable();
         service.saveUser("Алёна", "Филяева", (byte) 22);
@@ -21,6 +22,6 @@ public class Main {
         List<User> users = service.getAllUsers();
         users.forEach(System.out::println);
         service.cleanUsersTable();
-        service.dropUsersTable();
+
     }
 }
