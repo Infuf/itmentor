@@ -1,9 +1,8 @@
 package jm.task.core.jdbc.util;
 
-import com.sun.xml.bind.v2.schemagen.xmlschema.TypeHost;
 import jm.task.core.jdbc.model.User;
+import lombok.Getter;
 import org.hibernate.Hibernate;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -18,6 +17,7 @@ public class Util {
 
     private final static Logger logger = Logger.getLogger(Util.class.getName());
 
+    @Getter
     private static final SessionFactory sessionFactory;
 
     static {
@@ -38,10 +38,6 @@ public class Util {
             logger.warning("cannot create SessionFactory");
             throw new ExceptionInInitializerError(ex);
         }
-    }
-
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
     }
 
     public static Connection connectJDBC() {

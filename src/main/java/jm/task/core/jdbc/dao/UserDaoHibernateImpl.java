@@ -3,6 +3,7 @@ package jm.task.core.jdbc.dao;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
 
+import lombok.NoArgsConstructor;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
@@ -11,13 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+@NoArgsConstructor
 public class UserDaoHibernateImpl implements UserDao {
     private static final Logger logger = Logger.getLogger(UserDaoHibernateImpl.class.getName());
 
     private static final SessionFactory factory = Util.getSessionFactory();
-
-    public UserDaoHibernateImpl() {
-    }
 
 
     @Override

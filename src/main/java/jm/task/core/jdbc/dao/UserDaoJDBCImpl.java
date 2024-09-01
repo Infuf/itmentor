@@ -2,6 +2,7 @@ package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
+import lombok.NoArgsConstructor;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,14 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+@NoArgsConstructor
 public class UserDaoJDBCImpl implements UserDao {
 
     private static final Logger logger = Logger.getLogger(UserDaoJDBCImpl.class.getName());
 
-
-    public UserDaoJDBCImpl() {
-
-    }
 
     public void createUsersTable() {
         logger.info("Trying to create table in method : createUsersTable()");
